@@ -1,0 +1,80 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card text-center ">
+                <div class="card-header">
+                    <h3>Registro</h3>
+                </div>
+                <div class="card-body ">
+                    <form action="/signup" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" placeholder="Nombres"  autofocus required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="last_name" class="form-control" placeholder="Apellidos" autofocus required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="no_id" class="form-control" placeholder="Numero de identificacion" autofocus required>
+                        </div>
+                        <div class="form-group">
+                            <input type="date" name="fecha_nac" class="form-control" value="" id="fecha_nac" placeholder="Fecha de Nacimiento" autofocus required>
+                        </div>
+                        <!-- <div class="form-group" >
+                            <input type="text" name="Acudiente" class="form-control" placeholder = "Acudiente" value="" autofocus>
+                            <script language='javascript' type='text/javascript'>
+                            var year = document.getElementById("fecha_nac").value;
+                            console.log("el año es:");
+                            console.log(year);
+                                /*function checkMenorEdad() {
+                                    if (1==1document.getElementById("fecha_nac").value === document.getElementById("fecha_nac").value) {
+
+                                        document.getElementById("Acudiente").setCustomValidity("Campo Obligatori");
+                                        //document.getElementById("Acudiente").value=("Campo Obligatori");
+                                    } else {
+                                        document.getElementById("Acudiente").setCustomValidity("");
+                                    }
+                                }*/
+                                document.getElementById("fecha_nac").onchange = checkMenorEdad;
+                                //document.getElementById("Acudiente").onkeyup = checkMenorEdad;
+                            </script>
+                            
+                        </div> -->
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" placeholder="Correo Electronico" autofocus required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="id_paciente" class="form-control" placeholder="Identificación del Paciente (Solo si es acompañante)" autofocus>
+                        </div>
+                         <div class="form-group">
+                            <input type="text" name="username" placeholder="Nombre de Usuario" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="password" class="form-control" placeholder="Contraseña"
+                                id="password">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="confirm-password" class="form-control" placeholder="Confirmar Contraseña" id="confirm-password">
+                            <script language='javascript' type='text/javascript'>
+                                function check() {
+                                    if (document.getElementById("confirm-password").value != document.getElementById("password").value) {
+                                        document.getElementById("confirm-password").setCustomValidity("La Contraseña no coincide");
+                                    } else {
+                                        document.getElementById("confirm-password").setCustomValidity("");
+                                    }
+                                }
+                                document.getElementById("confirm-password").onchange = check;
+                                document.getElementById("password").onkeyup = check;
+                            </script>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block">
+                                Registrarse
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/js/script.js"></script>

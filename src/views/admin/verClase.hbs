@@ -1,0 +1,127 @@
+<div class="container-fluid p-3"></div>
+<div class="card text-center ">
+                <div class="card-header">
+                    <h3>Clase {{ elIdClase }}  </h3>
+                </div>
+<div class="container p-1 table-responsive">
+    <table class="table table-bordered" style="table-layout: fixed; width:100%" id="links">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Horario</th>
+                <th scope="col">Estudiantes</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Valor</th>
+                <!-- <th scope="col">Estudiante</th> -->
+                <th scope="col">Escenario</th>
+                <th scope="col">linea</th>
+                <th scope="col">Opción</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each verClase}}
+            <tr>
+                <th scope="row">{{ idClase }}</th>
+                <td>{{ fecha_Clase }}</td>
+                <td>{{ horario_Clase }}</td>
+                <td>{{ nombre_completo }}</td>
+                <td>{{ estado_Clase }}</td>
+
+                <!-- 
+                <td>
+                    <form action="/links/download/" method="POST">
+                        <div class="form-group" align="center">
+                            <input type="text" value="{{id}}" name="id" hidden>
+                            <input type="image" src="/img/DocumentIcon.png" class="rounded-circle w-50">
+                        </div>
+                    </form>
+                </td>
+                -->
+                <td>{{ valor_Clase }}</td>
+                <!-- <td>{{ idEstudiante }}</td> -->
+                <td>{{ nombreEscenario }}</td>
+                <td>{{ linea }}</td>
+                <td>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <!--
+                            <form action="/links/status1/" method="POST">
+                                <div class="form-group" align="center">
+                                    <input type="text" value="{{id}}" name="id" hidden>
+                                    <button class="btn btn-success" style="width: 100px;">Aprobar</button>
+                                </div>
+                            </form> 
+                            
+                            <form action="/links/modifClase/" method="GET">
+                                <div class="form-group" align="center">
+                                   <input type="text" value="{{idClase}}" name="idClase" hidden>
+                                    <button class="btn btn-success" style="width: 100px;">Modificar</button>
+                                </div>
+                            </form>-->
+                            <form action="/links/EstudianteClaseVista/" method="POST">
+                                <div class="form-group" align="center">
+                                    <input type="text" value="{{idClase}}" name="idClase" hidden>
+                                    <input type="text" value="{{id}}" name="id" hidden>
+                                    <button class="btn btn-success" style="width: 100px;">VISTA</button>
+                                </div>
+                            </form>
+                            
+                            <form action="/links/EstudianteClasePerdida/" method="POST">
+                                <div class="form-group">
+                                    <input type="text" value="{{idClase}}" name="idClase" hidden>
+                                    <input type="text" value="{{id}}" name="id" hidden>
+                                    <button class="btn btn-danger" style="width: 100px;">PERDIDA</button>
+                                </div>
+                            </form>
+                            
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+</div>
+<div class="container p-3"></div>
+
+<script>
+    $(document).ready(function () {
+        $('#links').dataTable({
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ registros por pagina",
+                "zeroRecords": "No hay nada - 0 Registros",
+                "info": "Pagina _PAGE_ de _PAGES_",
+                "infoEmpty": "No hay registros disponibes",
+                "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar:",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            },
+            "lengthMenu": [[5, 10, 50, -1], [5, 10, 50, "Todo"]],
+            columnDefs: [
+                { "width": "20px", "targets": [0] },
+                { "width": "65px", "targets": [1] },
+                { "width": "60px", "targets": [2] },
+                { "width": "100px", "targets": [3] },
+                { "width": "65px", "targets": [4] },
+                { "width": "40px", "targets": [5] },
+                { "width": "", "targets": [6, 7, 8] }
+            ],
+            "columns": [
+                { "orderData": [0, 1] },
+                { "orderData": 0, },
+                { "orderData": [2, 3, 4, 5, 6] },
+                null,
+                null
+            ]
+        });
+    });
+</script>

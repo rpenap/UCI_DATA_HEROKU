@@ -1,0 +1,51 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card text-center ">
+                <div class="card-header">
+                    <h3>Crear Examen</h3>
+                </div>
+                <div class="card-body ">
+                    <form action="/links/insertClase" method="POST" enctype="multipart/form-data">
+                        <div class="form-group panel panel-heading text-left ">
+                            Fecha de la clase
+                        <div class="panel-body">
+                            <input type="date" name="fechaAddClase" id="fechaAddClase" title="fechaAddClase" class="form-control panel-body" placeholder="fechaAddClase"  autofocus>
+                        </div>
+                        </div>
+                        <div class="form-group">
+                            <!-- <input type="date" name="fff" title="fff" class="form-control panel-body" placeholder="fff" id="fff" autofocus> 
+                            <select value="" class="browser-default custom-select" name="creaEscenario" id="creaEscenario">
+                                <option value="0">Selecciona el escenario</option>
+                                {{#each listaEscenarios}}
+                                <option value="{{ idEscenario }}">{{ nombreEscenario }}</option>
+                                {{/each}}
+                                </option>
+                            </select> -->
+                            <input type="text" name="creaEscenario" id="creaEscenario" class="form-control" placeholder="Id del Escenario" autofocus required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="idLinea" class="form-control" placeholder="Linea del Escenario" autofocus required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="idProfesor" class="form-control" placeholder="Id del Profesor" autofocus required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="idHoraClase" id="idHoraClase" class="form-control" placeholder="Id del Horario" autofocus required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" name="valorClase" class="form-control" placeholder="Valor de la clase" autofocus required>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block">
+                                Crear Clase
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/js/script.js"></script>

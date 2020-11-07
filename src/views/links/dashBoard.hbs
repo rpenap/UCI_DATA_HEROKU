@@ -1,0 +1,224 @@
+<div class="container-fluid p-3"></div>
+<!--
+<div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js" ></script>
+    <canvas id="Signos_Prueba" width="400" height="400"></canvas>
+</div>
+-->
+<!-- TABLA PACIENTE -->
+<div class="container p-1 table-responsive">
+    <table class="table table-bordered" style="table-layout: fixed; width:100%" id="links">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Identificación</th>
+                <th scope="col">Nombre Paciente</th>
+                <th scope="col">Edad</th>
+                <th scope="col">Fecha Nac</th> 
+                <th scope="col">Cama</th>
+                <th scope="col">Fecha Ingreso</th>
+                <th scope="col">Patología</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each pac_HC}}
+            <tr>
+                <th scope="row">{{ id_hcl }}</th>
+                <td>{{ identif_Paciente }}</td>
+                <td>{{ nombre_completo }}</td>
+                <td>{{ edad }}</td>
+                 <td>{{ fecha_nac }}</td>
+                <td>{{ cama_UCI }}</td>
+                <td>{{ fecha_Ingreso }}</td>
+                <td>{{ nombre_Enfermedad }}</td>
+                <!--
+                <td>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <form >
+                                <div class="form-group" align="center">
+                                    <input type="text" value="{{idClase}}" name="idClase" hidden>
+                                    <button class="btn btn-success" style="width: 100px;">Modificar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </td>
+                -->
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+<!-- SIGNOS VITALES -->
+<div class="container p-4">
+    <div class="card">
+        <div class="card-header text-center">
+            <h4>Signos Vitales</h4>
+        </div>
+        <div class="card-body">
+            <form action="/links/Ing_Signos/" method="POST">
+            {{#each pac_HC}}
+            <input type="text" value="{{id_hcl}}" name="idPaciente" id="idPaciente"  hidden>
+            <div class="row p-1">
+                <div class="col-md-3 mx-auto"> <!-- Presión Arterial -->
+                        <div class="container p-1">
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <h4>Presión Arterial</h4>
+                                </div>
+                                <div class="card-body">
+                                    <input type="text" placeholder="Sistólica" id="Sistolica" name="Sistolica" size="5" autofocus required>
+                                    /
+                                    <input type="text" placeholder="Diastólica" id="Diastolica" name="Diastolica" size="5" autofocus required>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-md-3 mx-auto"> <!-- Sat. de Oxigeno -->
+                        <div class="container p-1">
+                            <div class="card" >
+                                <div class="card-header text-center">
+                                    <h4>Sat. de Oxigeno</h4>
+                                </div>
+                                <div class="card-body">
+                                    <input type="text" placeholder="% Presión Arterial" id="Sat_Ox" name="Sat_Ox" class="form-control"  autofocus required>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-md-3 mx-auto"> <!-- Frec. Cardiaca -->
+                        <div class="container p-1">
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <h4>Frec. Cardiaca</h4>
+                                </div>
+                                <div class="card-body">
+                                    <input type="text" placeholder="Frecuencia Cardiaca" id="Frec_Card" name="Frec_Card" class="form-control"  autofocus required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                </div>
+                <div class="col-md-3 mx-auto">
+                        <div class="container p-1">
+                            <div class="card">
+                                <div class="card-body">
+                                        <div>  
+                                            <button class="btn btn-success" style="width: 200px;">Ingresar Signos</button>
+                                        </div>
+                                    </form>
+                                    <br>
+                                    <form action="/alertaMedicos" method="POST">
+                                        <div> 
+                                            <input type="text" value="{{id_hcl}}" name="idhcl" hidden>
+                                            <button class="btn btn-danger" style="width: 200px;">Generar Alerta</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        
+                </div>
+
+            </div>
+            {{/each}}
+            </form>             
+        </div>
+    </div>
+</div>
+
+
+<!-- DASHBOARD -->
+<div class="container p-4">
+    <div class="row p-1">
+        <div class="col-md-12 mx-auto">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h3>Datos Paciente</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8 mx-auto">
+                            <div class="container p-1">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4>Signos_Vitales</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js" ></script>
+    
+                                        <canvas id="Signos_Vitales" width="400" height="400"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-4 mx-auto">
+                            <div class="container p-1">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4>Limites</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js" ></script>
+                                        <canvas id="Signos_Criticos" width="400" height="400"></canvas>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<script src="/js/Graficos.js"></script>
+
+<div class="container p-3"></div>
+
+<script>
+    $(document).ready(function () {
+        $('#links').dataTable({
+            "language": { 
+                "lengthMenu": "Mostrar _MENU_ registros por pagina",
+                "zeroRecords": "No hay nada - 0 Registros",
+                "info": "Pagina _PAGE_ de _PAGES_",
+                "infoEmpty": "No hay registros disponibes",
+                "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar:",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            },
+            "lengthMenu": [[5, 10, 50, -1], [5, 10, 50, "Todo"]],
+            columnDefs: [
+                { "width": "10px", "targets": [0] },
+                { "width": "90px", "targets": [1] },
+                { "width": "220px", "targets": [2] },
+                { "width": "15px", "targets": [3] },
+                { "width": "80px", "targets": [4] },
+                { "width": "40px", "targets": [5] },
+                { "width": "", "targets": [6, 7] }
+            ],
+            "columns": [
+                { "orderData": [0, 1] },
+                { "orderData": 0, },
+                { "orderData": [2, 3, 4, 5, 6] },
+                null,
+                null
+            ]
+        });
+    });
+</script>

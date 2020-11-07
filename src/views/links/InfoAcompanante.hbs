@@ -1,0 +1,71 @@
+<div class="container-fluid p-3"></div>
+<div class="container p-1 table-responsive">
+    <table class="table table-bordered" style="table-layout: fixed; width:100%" id="links">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Identificación</th>
+                <th scope="col">Nombre Paciente</th>
+                <th scope="col">Edad</th>
+                <th scope="col">Fecha Nac</th> 
+                <th scope="col">Fecha Obs</th>
+                <th scope="col">Obs</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {{#each links}}
+            <tr>
+                <th scope="row">{{ id_Paciente }}</th>
+                <td>{{ identif_paciente }}</td>
+                <td>{{ nombre_Completo }}</td>
+                <td>{{ edad }}</td>
+                 <td>{{ fecha_nac }}</td>
+                <td>{{ hora_Obs_Doctor }}</td>
+                <td>{{ valor_Obs_Doctor }}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+<div class="container p-3"></div>
+
+<script>
+    $(document).ready(function () {
+        $('#links').dataTable({
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ registros por pagina",
+                "zeroRecords": "No hay nada - 0 Registros",
+                "info": "Pagina _PAGE_ de _PAGES_",
+                "infoEmpty": "No hay registros disponibes",
+                "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar:",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            },
+            "lengthMenu": [[5, 10, 50, -1], [5, 10, 50, "Todo"]],
+            columnDefs: [
+                { "width": "10px", "targets": [0] },
+                { "width": "80px", "targets": [1] },
+                { "width": "220px", "targets": [2] },
+                { "width": "15px", "targets": [3] },
+                { "width": "80px", "targets": [4] },
+                { "width": "80px", "targets": [5] },
+                { "width": "", "targets": [6] }
+            ]/*,
+            "columns": [
+                { "orderData": [0, 1] },
+                { "orderData": 0, },
+                { "orderData": [2, 3, 4, 5, 6] },
+                null,
+                null
+            ]*/
+        });
+    });
+</script>

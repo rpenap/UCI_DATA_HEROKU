@@ -1,0 +1,64 @@
+<div class="container p-3"></div>
+<div class="container p-2 table-responsive">
+    <table class="table table-bordered" style="table-layout: fixed; width:100%" id="users">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Identificación</th>
+                <th>Email</th>
+                <th scope="col">Tipo usuario</th>
+                <th scope="col">Edición</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each users}}
+            <tr>
+                <td>{{ nombres_Usuario }} {{ apellidos_Usuario }}</td>
+                <td>{{ no_id }}</td>
+                <td>{{ email }}</td>
+                <td>{{ user_mode }}</td>
+                <td>
+                    <a href="/admin/delete/{{no_id}}" class="btn btn-danger">Borrar</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+<div class="container p-3"></div>
+
+<script>
+    $(document).ready(function () {
+        $('#users').dataTable({
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ registros por pagina",
+                "zeroRecords": "No hay nada - 0 Registros",
+                "info": "Pagina _PAGE_ de _PAGES_",
+                "infoEmpty": "No hay registros disponibes",
+                "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar:",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            },
+            "lengthMenu": [[5, 10, 50, -1], [5, 10, 50, "Todo"]],
+            columnDefs: [
+                { "width": "280px", "targets": [0] },
+                { "width": "100px", "targets": [1] },
+                { "width": "250px", "targets": [2] },
+                { "width": "", "targets": [3, 4] }
+            ],
+            "columns": [
+                { "orderData": [0, 1] },
+                { "orderData": 0, },
+                { "orderData": [2, 3, 4] },
+                null
+            ]
+        });
+    });
+</script>

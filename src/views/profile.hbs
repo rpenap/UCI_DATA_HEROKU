@@ -1,0 +1,225 @@
+
+<section class="pricing py-5">
+    <div class="container">
+        <div class="row">
+            {{#each udata}}
+            <h3>Bienvenido, {{name}} {{last_name}}</h3>
+        </div>
+        <div class="row">
+            <i>
+                <h4>{{user_mode}}</h4>
+            </i>
+        </div>
+        {{else}}
+        <p>usuario</p>
+        {{/each}}
+
+
+        <div class="row p-4">
+            <!-- -->
+            <div class=" card ">
+                <h5 class="card-title text-muted text-uppercase text-center">CLASES</h5>
+                <!--  <div class="container p-3"></div>-->
+                <div class="container p-2 table-responsive">
+                    <table class="table table-bordered" style="table-layout: fixed; width:100%" id="form_Clase_Users">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Horario</th>
+                                <th scope="col">Profesor</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Valor</th>
+                                <!-- <th scope="col">Estudiante</th> -->
+                                <th scope="col">Escenario</th>
+                                <th scope="col">linea</th>
+                                <th scope="col">Opción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                    {{#each clase_Users}}
+                            <tr>
+                                <th scope="row">{{ idPaciente }}</th>
+                                <td>{{ fecha_Clase }}</td>
+                                <td>{{ horario_Clase }}</td>
+                                <!--
+                                <td>{{ idProfesor }}</td>
+                                -->
+                                <td>{{ nombre_completo }}</td>
+                                <td>{{ estado_Clase }}</td>
+                                <td>{{ valor_Clase }}</td>
+                                <!-- <td>{{ idEstudiante }}</td> -->
+                                <td>{{ nombreEscenario }}</td>
+                                <td>{{ linea }}</td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <!--
+                                    <form action="/links/status1/" method="POST">
+                                        <div class="form-group" align="center">
+                                            <input type="text" value="{{id}}" name="id" hidden>
+                                            <button class="btn btn-success" style="width: 100px;">Aprobar</button>
+                                        </div>
+                                    </form> -->
+                                    
+                                    <form action="/links/modificarClaseEstud/" method="POST">
+                                        <div class="form-group" align="center">
+                                            <input type="text" value="{{idClase}}" name="idClase" hidden>
+                                            <button class="btn btn-success" style="width: 100px;">Modificar</button>
+                                        </div>
+                                    </form>
+                                    <!--
+                                    <form action="/links/status2/" method="POST">
+                                        <div class="form-group">
+                                            <input type="text" value="{{id}}" name="id" hidden>
+                                            <button class="btn btn-danger" style="width: 100px;">Eliminar</button>
+                                        </div>
+                                    </form>
+                                    -->
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                    <!--
+                        <table class="table table-bordered" style="table-layout: fixed; width:100%" id="users">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Identificación</th>
+                                    <th>Email</th>
+                                    <th scope="col">Tipo usuario</th>
+                                    <th scope="col">Edición</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each users}}
+                                <tr>
+                                    <td>{{ name }} {{ last_name }}</td>
+                                    <td>{{ no_id }}</td>
+                                    <td>{{ email }}</td>
+                                    <td>{{ user_mode }}</td>
+                                    <td>
+                                        <a href="/admin/delete/{{no_id}}" class="btn btn-danger">Borrar</a>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                        -->
+                </div>
+            </div>
+        </div>
+
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card text-center ">
+                <div class="card-header">
+                    <h3>Inscribir Clase</h3>
+                </div>
+                <div class="card-body ">
+                    <form action="/links/registrarClase" method="POST" enctype="multipart/form-data">
+                        <div class="form-group panel panel-heading text-left ">
+                            Fecha de la clase
+                        <div class="panel-body">
+                            <input type="date" name="fechaAddClase" id="fechaAddClase" title="fechaAddClase" class="form-control panel-body" placeholder="fechaAddClase"  autofocus required>
+                        </div>
+                        </div>
+                        <div class="form-group text-left">Escenario
+                            <select value="" class="browser-default custom-select" name="escenarioProfile" id="escenarioProfile" autofocus required>
+                                <option value="0">Selecciona el escenario</option>
+                                {{#each listaEscenarios}}
+                                <option value="{{ idEscenario }}">{{ nombreEscenario }}</option>
+                                {{/each}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group text-left"> Horario
+                            <select value="" class="browser-default custom-select" name="idHora" id="idHora" autofocus required>
+                                <option value="default">Selecciona la Hora</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group text-left">Id Clase
+                            <select value="" class="browser-default custom-select" name="idClaseReg" id="idClaseReg" autofocus required>
+                                <option value="default">Selecciona la clase</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group text-left">Profesor
+                            <select value="" class="browser-default custom-select" name="idProfesor" id="idProfesor" autofocus required>
+                            </select>
+                        </div>
+
+                        <div class="form-group text-left" >Linea
+                            <select value="" class="browser-default custom-select" name="lineaReg" id="lineaReg" autofocus required>
+                            </select>
+                        </div>
+
+                        <div class="form-group text-left">Valor
+                            <select value="" class="browser-default custom-select" name="valorClaseReg" id="valorClaseReg" autofocus required>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block">
+                                Registrar Clase
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </div>
+</section>
+
+
+<script type="text/javascript" src="/js/script.js"></script>
+<script>
+                $(document).ready(function () {
+                    $('#form_Clase_Users').dataTable({ //links
+                        "language": {
+                            "lengthMenu": "Mostrar _MENU_ registros por pagina",
+                            "zeroRecords": "No hay nada - 0 Registros",
+                            "info": "Pagina _PAGE_ de _PAGES_",
+                            "infoEmpty": "No hay registros disponibes",
+                            "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                            "loadingRecords": "Cargando...",
+                            "processing": "Procesando...",
+                            "search": "Buscar:",
+                            "paginate": {
+                                "first": "Primero",
+                                "last": "Ultimo",
+                                "next": "Siguiente",
+                                "previous": "Anterior"
+                            }
+                        },
+                        "lengthMenu": [[5, 10, 50, -1], [5, 10, 50, "Todo"]],
+                        columnDefs: [
+                            { "width": "20",    "targets": [0] },
+                            { "width": "65px",  "targets": [1] },
+                            { "width": "60px",  "targets": [2] },
+                            { "width": "190px", "targets": [3] },
+                            { "width": "65px",  "targets": [4] },
+                            { "width": "40px",  "targets": [5] },
+                            { "width": "130px",  "targets": [6] },
+                            { "width": "40px",  "targets": [7] },
+                            { "width": "",      "targets": [8] }
+                        ],
+                        /*"columns": [
+                            { "orderData": [0, 1] },
+                            { "orderData": 0, },
+                            { "orderData": [2, 3, 4, 5, 6, 7] },
+                            null
+                        ]*/
+                    });
+                });
+            </script>

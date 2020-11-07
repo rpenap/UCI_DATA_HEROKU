@@ -1,0 +1,116 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card text-center ">
+                <div class="card-header">
+                    <h3>Ingresar Paciente a UCI</h3>
+                </div>
+                <div class="card-body ">
+                    <form action="/links/InsertPacienteUCI" method="POST">
+                        {{#each pac_HC}}
+
+                        <div class="form-group panel panel-heading text-left"> Id de la Historia Clinica
+                            <!-- <input type="text" value="{{ id_hcl }}" name="IdClase" id="IdClase" class="form-control" placeholder="Id de clase" readonly> -->
+                            <input type="text" value="{{ id_hcl }}" name="id_hcl" id="id_hcl" class="form-control" placeholder="Id de la Historia Clinica" readonly>
+                        </div>
+
+                        <div class="form-group panel panel-heading text-left"> Identificación del Paciente
+                            <!-- <input type="text" value="{{ id_hcl }}" name="IdClase" id="IdClase" class="form-control" placeholder="Id de clase" readonly> -->
+                            <input type="text" value="{{ identif_paciente }}" name="identif_paciente" id="identif_paciente" class="form-control" placeholder="Identificación del Paciente" readonly>
+                        </div>
+
+                        <!--
+                        <div class="form-group panel panel-heading text-left ">Fecha de la clase
+                            <div class="panel-body">
+                                <input type="date" value="{{ fecha_Clase }}" name="fechaModifClase" id="fechaModifClase" title="fechaModifClase" class="form-control panel-body" placeholder="fechaModifClase" autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group panel panel-heading text-left"> Id UCI
+                            <select value="" class="browser-default custom-select" name="escenario" id="escenario">
+                                <option value="{{ idEscenario }}">{{ idEscenario }}</option>
+                                {{#each seleccionUCI}}
+                                    <option value="{{ idClase }}">{{ nombreEscenario }}</option>
+                                {{/each}}
+                            </select>
+                        </div> -->
+
+                        <div class="form-group panel panel-heading text-left"> Id UCI
+                            <select value="Sel_UCI" class="browser-default custom-select" name="Sel_UCI" id="Sel_UCI">
+                                <option >Seleccione la UCI</option>
+                                {{#each seleccionUCI}}
+                                    <option value="{{ id_UCI }}">{{ UCI }}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+
+                        <div class="form-group panel panel-heading text-left"> Id Cama
+                            <select value="Sel_Cama" class="browser-default custom-select" name="Sel_Cama" id="Sel_Cama">
+                                <option >Seleccione la Cama</option>
+                                {{#each seleccionUCI}}
+                                    <option value="{{ id_UCI }}">{{ UCI }}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+
+                        <!--
+                        <div class="form-group panel panel-heading text-left"> Id Cama
+                            <input type="text" id="id_Cama" name="id_Cama" class="form-control" placeholder="Id Cama" autofocus required>
+                        </div>
+                        -->
+
+                        <div class="form-group panel panel-heading text-left"> Estado Paciente
+                            <input type="text" name="estado_Paciente" id="estado_Paciente" class="form-control" placeholder="Estado Paciente"
+                                autofocus required>
+                        </div>
+
+                        <div class="form-group panel panel-heading text-left"> Presión Arterial Esperada
+                            <input type="text" id="presion_Art_Esperada" name="presion_Art_Esperada" class="form-control" placeholder="Presión Arterial Esperada"
+                                autofocus required>
+                        </div>
+
+                        <div class="form-group panel panel-heading text-left"> Saturación de Oxigeno Esperada
+                            <input type="text" id="sat_Ox_Esperada" name="sat_Ox_Esperada" class="form-control" placeholder="Saturación de Oxigeno Esperada"
+                                autofocus required>
+                        </div>
+
+                        <div class="form-group panel panel-heading text-left"> Frecuencia Cardiaca Esperada
+                            <input type="text" id="frec_Car_Esperada" name="frec_Car_Esperada" class="form-control" placeholder="Frecuencia Cardiaca Esperada"
+                                autofocus required>
+                        </div>
+
+                        <!--
+                        <div class="form-group panel panel-heading text-left"> Estado Paciente
+                            <input type="text" id="estado_Paciente"  name="estado_Paciente" class="form-control" placeholder="Estado Paciente"
+                                autofocus required>
+                        </div>
+                        -->
+
+                        <div class="form-group panel panel-heading text-left"> Indicaciones Paciente
+                            <input type="text" id="indicaciones_Paciente" name="indicaciones_Paciente" class="form-control" placeholder="Indicaciones Paciente"
+                                autofocus required>
+                        </div>
+                        {{/each}}
+                        <div class="form-group">
+                            <!-- <button class="form-group btn btn-primary btn-block" name="btnModifClase"> -->
+                            <button class="form-group btn btn-primary btn-block" name="btnAsigPaciente">
+                                Asignar Paciente a UCI
+                            </button>
+                        </div>
+                        
+                        
+                    </form>
+                    <!-- 
+                    <form class="form-group" action="/links/updateClase/" method="POST">
+                                <div class="form-group" align="center">
+                                    <input type="text" value="{{idClase}}" name="idClase" hidden>
+                                    <button class="form-group btn btn-success btn-block" name="btnModifClase" id="btnModifClase" >oTRO</button>
+                                </div>
+                        </form>
+                        -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/js/script.js"></script>
